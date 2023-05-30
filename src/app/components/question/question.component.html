@@ -1,0 +1,21 @@
+<div *ngIf="indexSelectQuestion!=countQuestion">
+<div  class="card" style="width: 18rem;">    
+    <div class="card-body">
+      <h5 class="card-title">{{Questions[indexSelectQuestion].text}}</h5>
+      <p class="card-text"></p>
+      
+      <div  *ngFor="let item of Questions[indexSelectQuestion].anwers" class="form-check">
+        <input (input)="onClickAnswer(item.right)"   class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          {{item.text}}
+        </label>
+      </div>
+      <div *ngIf="userAnswers[indexSelectQuestion]!=null">
+        <a  (click)="onClickNextQuestion()"  href="#" class="btn btn-primary">Следующий вопрос</a>
+      </div>     
+            
+    </div>
+  </div>
+  
+</div>
+<h3 *ngIf="indexSelectQuestion==countQuestion">Number Of Correct Answers : {{numberOfCorrectAnswers}} </h3>
